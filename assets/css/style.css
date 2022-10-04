@@ -172,7 +172,8 @@ body {
 
 
 .hide {
-    position: absolute;
+  filter:blur(10px);
+  opacity: 0.3;
 }
 /*--------------------MAIN-------------------------------------*/
 .page {
@@ -958,6 +959,15 @@ line-height: 156%;
 .popUp-block {
     visibility: hidden; 
 
+}
+.visible {
+    visibility: visible;
+    z-index: 1000;
+    position: absolute;
+    transform: translate(50%,0);
+    width: 120%;
+    left: -45%;
+    top: 15%;
 }
 .popUp-block_container {
     background: #F2F2F2;

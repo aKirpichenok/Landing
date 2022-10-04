@@ -1,5 +1,6 @@
 const button = document.querySelectorAll('.button-more')
 const sections = document.querySelectorAll('section')
+const closePopUp = document.querySelector('.header-popUp__close')
 const popUp = {}
 
 const recurs = (arr) => {
@@ -25,14 +26,31 @@ button.forEach((item, index) => {
         }
         [...sections].forEach(section => {
             if (section.className.includes('popUp-block')) {
-                section.style.visibility = 'visible'
-                document.querySelector('.popUp-block_container').style.position = "relative"
+                section.classList.add('visible')
+            } else if (section.className.includes('page_courses')) {
+                section.children[0].classList.add('hide')
             } else {
-                section.classList.add('hide')
+                section.style.display = 'none'
             }
+            window.scrollTo({
+                top: 150,
+            })
         })
 
-
+        closePopUp.addEventListener('click', () => {
+            [...sections].forEach(section => {
+                if (section.className.includes('popUp-block')) {
+                    section.classList.remove('visible')
+                } else if (section.className.includes('page_courses')) {
+                    section.children[0].classList.remove('hide')
+                } else {
+                    section.style.display = 'block'
+                }
+                window.scrollTo({
+                    top: 800,
+                })
+            })
+        })
         // const div = document.createElement('div')
         // div.className = 'big'
         // div.innerHTML = popUp['item-courses__title']
